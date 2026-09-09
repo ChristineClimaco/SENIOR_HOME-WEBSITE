@@ -1,0 +1,777 @@
+
+:root{
+--dark-background: #2A0038;     
+--neutral-darker: #222831;       
+--neutral-darkerrimary: #132743; 
+--neutral-dark: #393e46;        
+--secondary: #407088;         
+--backdrop-merror: #6d737d7e;   
+--action: #ff2285;             
+--accent: #ffb5b5;              
+--accent-transparent: #ffb5b592; 
+--highlight: #ffcab0;          
+--light-accent: #ffcbcb;        
+--light-accent: #ffcbcb;        
+}
+ body{
+    background-color: var(--light-accent);
+}
+/* Start Header */
+header{
+    background-image: url("../assets/images/events/header_image.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    border-radius: 0 0 34vw 0;
+    box-shadow: inset 1px 1px 300px 2px #000000;
+}
+/* Here is before pseudo-element to add overlay */
+header::before, #specia_event::before{
+    content:"";
+    background: var(--layout-back);
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 34vw 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+/* Here is navigation box */
+#bar{display: none;}
+.nav_box {
+    position: fixed;
+    top: 0px;
+    padding: 0 40px 0 20px;
+    z-index: 4000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-image:linear-gradient(var(--neutral-darkerrimary), 50%, #b500b200);
+}
+.logo img {
+    height: 50px;
+}
+nav a{
+margin : 0 10px;
+color: white;
+text-decoration: none;
+font-size: 18px;
+position: relative;
+}
+nav a.acitev{
+    color: var(--action);
+    font-weight: 600;
+}
+/* Here is before pseudo-element for navigation links */
+nav a:before{
+    content: "";
+    width: 0%; /* Start with 0 width */
+    position: absolute;
+    left: 50%; /* Start from the center */
+    top: -3px;
+    transform: translateX(-50%); /* take back to center the line */
+    height: 2px;
+    background: var(--light-accent);
+    transition: .2s;/* Smooth transition */
+}
+/* On hover will expand the line */
+nav a:hover:before{
+    width: 100%;
+}
+nav a:hover{
+    color: var(--light-accent);
+}
+nav span{
+    display: inline-flex;
+    align-items: stretch;
+
+}
+nav span button{
+    border: none;
+    color: var(--action);
+    font-size: 20px;
+    background-color: var(--accent);
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+}
+nav input{
+    padding: 5px;
+    background: transparent;
+    border: 1px solid var(--light-accent);
+    color: var(--light-accent);
+    outline: none;
+    border-radius: 0 5px 5px 0;
+}
+/* On focus will change its border color */
+nav input:focus{
+    border-color: var(--accent);
+}
+header .container div {
+    position: relative;
+    z-index: 2;
+    top: 50vh;
+    left: 0;
+    width: max-content;
+    color: white;
+    
+    transform: translateY(-50%);
+    /* font-size: 1.5vw; */
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+}
+header .container div h1{
+    background-color: var(--accent-transparent);
+    padding:5px 90px 5px 20px;
+    width:max-content;
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+}
+a[href="#bookEvent"]{
+    text-decoration: none;
+}
+
+header .container div h1 span{
+    color:var(--secondary)
+}
+/************* End Header *************/
+
+/* START MAin */
+section {
+    padding: 100px 10px 200px;
+    position: relative;
+}
+section#popular_activity {
+    padding: 0px 10px 200px;
+    position: absolute;
+    top: -333px;
+    z-index: 1;
+}
+
+section#popular_activity > div {
+    display: flex;
+    gap: 20px;
+}
+.card_activity {
+    padding: 20px 40px;
+    background-color: var(--accent-transparent);
+    backdrop-filter: blur(2px);
+    color: var(--neutral-dark);
+    line-height: 23px;
+    border: 5px solid white;
+    border-radius: 10px;
+    flex: 0 0 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+.card_activity h3{
+    color: var(--neutral-dark);;
+    margin-bottom: 20px;
+}
+
+/* other exciting events section */
+
+#activity_list_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    justify-items: center;
+}
+.activity_box{
+    display: flex;
+    width: 90%;
+    align-items: stretch;
+    justify-content: center;
+    border: 5px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--accent);
+    box-shadow: 1px 1px 5px 1px var(--neutral-darker);
+    transition: .3s;
+
+}
+.activity_box:hover{
+    transform: translate(-1px, -1px);
+    box-shadow:3px 3px 5px 1px var(--neutral-darker) ;
+}
+
+.activity_box .img_box{
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.activity_box img{
+    width: 225px;
+    height: 100%;
+    transition: 1.5s;
+}
+.activity_box:hover img{
+    transform: scale(1.09);
+}
+.activity_box > .detai_box {
+    padding: 10px;
+    color: rgb(56, 52, 52);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.activity_box > div h3{
+    margin-bottom: 10px;
+}
+
+/* Start specila events section */
+#specia_event{
+    background-image: url("../assets/images/events/special_events_background.png");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+#specia_event::before{
+    border-radius: 0;
+}
+#special_detail_box{
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+#specia_event img{
+    width: 340px;
+    float: left;
+    border-radius: 10px;
+}
+#special_detail_box .special_detail{
+    padding: 0 20px;
+    float: left;
+    line-height: 25px;
+    color: white;
+    width: 50%;
+}
+.special_detail h3 {
+    padding: 10px 20px;
+    width: max-content;
+    background: var(--neutral-darkerrimary);
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+.special_detail p {
+    margin-bottom: 10px;
+}
+.special_detail ul li {
+    padding: 5px 0 5px 20px;
+}
+.own_event h3{
+text-align: center;
+background-color: var(--accent);
+color: var(--neutral-dark);
+width: max-content;
+padding: 10px 20px;
+margin:20px auto;
+border-radius: 50px;
+}
+.own_event > p{
+    font-size: 25px;
+    max-width: 40%;
+    text-align: center;
+    margin: 20px auto;
+    color: var(--light-accent);
+    line-height: 35px;
+    background-color: var(--backdrop-merror);
+    backdrop-filter: blur(20px);
+}
+.book_event{
+    margin: 0  auto !important;
+    width: max-content;
+    background-color: lightgreen;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: black;
+    transition: .3s;
+    cursor: pointer;
+    margin: 10px auto !important;
+    display: block;
+}
+label[for="show_form"]::before{
+    content: "Open the booking form";
+}
+label[for="show_form"]:has(input:checked)::before{
+    content: "";
+}
+label[for="show_form"]:has(input:checked)::after{
+    content: "Close the booking form";
+}
+.book_event:hover{
+    background-color: rgb(48, 206, 48);
+    color: white;
+}
+label[for="show_form"] input{
+    display: none;
+}
+
+.form_box{
+    position: relative;
+    height: 0px;
+    transition: .4s;
+}
+
+label[for="show_form"]:has(input:checked)+ .form_box {
+    height: 850px;
+}
+.form_box > div{
+     overflow: hidden;
+    position: absolute;
+    top:20px;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    transition: .5s;
+    width: max-content;
+}
+
+label[for="show_form"]:has(input:checked)+ .form_box > div{
+    bottom: 0% !important;
+   padding: 20px;
+}
+.form_box form{
+    margin: auto;
+    background-color: var(--backdrop-merror);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 2px 2px 20px 0px #000000;
+     padding: 20px;
+    display: grid;
+    grid-template-areas: "name lastname"
+                            "phone date"
+                            "service eventType"
+                            "service vistNumber"
+                            "submit submit";
+                            gap: 30px;
+                            align-items: center;
+                            justify-content: stretch;
+}
+
+label{
+    display: flex;
+    justify-content: start;
+    font-size: 18px;
+}
+label span{
+    padding: 10px;
+    background-color: var(--accent);
+    border-radius: 10px 0 0 10px;
+}
+label input{
+    padding: 10px;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid var(--accent);
+    display: inline-block;
+    outline: none;
+}
+label[for^="f_name"]{
+    grid-area: name;
+}
+label[for^="l_name"]{
+    grid-area: lastname;
+}
+label[for^="phone_inp"]{
+    grid-area: phone;
+}
+label[for^="date_time"]{
+    grid-area: date;
+}
+.service_inp{
+    grid-area: service;
+   overflow-x: auto;
+}
+.service_inp > div{
+ display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.service_inp p, .event_type p{
+    margin: 10px 0;
+    color: white;
+    font-size: 20px;
+}
+.service_inp label:has(input[type="checkbox"]){
+    margin: 10px !important;
+    font-size: 18px;
+    color: white;
+    background-color: var(--secondary);
+    padding: 10px 20px 10px 0;
+    border-radius: 50px;
+    width: max-content;
+    transition: .5s;
+    cursor: pointer;
+    font-size: 15px;
+}
+.service_inp label:has(input[type="checkbox"]):hover{
+    background-color: var(--neutral-darkerrimary);
+}
+input[type="checkbox"]{
+    width: 50px;
+}
+.event_type{
+    grid-area: eventType;
+}
+.event_type select{
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: var(--accent);
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--highlight);
+}
+
+label[for^="num_inp"]{
+    grid-area: vistNumber;
+}
+input[type="submit"]{
+    grid-area: submit;
+    width: max-content;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 50px;
+    border:none;
+    background-color: var(--neutral-darkerrimary);
+    background-image: linear-gradient(45deg, var(--secondary)50%, var(--neutral-darkerrimary) 50%, var(--neutral-darkerrimary)100%);
+    background-size: 250% 250%;
+    background-position: top right;
+    color: var(--accent);
+    transition: .4s;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    background-position: bottom  left;
+}
+
+
+/* Footer */
+
+img.icon_acount {
+    width: 30px;
+    height: 30px;
+    filter: hue-rotate(45deg)  drop-shadow(0px 0px 0px #33333300);
+    transition: .4s;
+    border-radius: 50%;
+}
+img.icon_acount:hover{
+    filter: hue-rotate(0deg) drop-shadow(2px 2px 3px #333);
+    transform: translateY(-5px);
+}
+.social_acount {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+footer {
+    background-color: var(--neutral-darkerrimary);
+}
+footer section {
+    display: grid;
+    grid-template-areas: "quickLink main"
+                            "other other" ;
+    justify-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+}
+footer > section > div:nth-child(1){
+    grid-area: quickLink;
+}
+footer > section > div:nth-child(2){
+    grid-area: main;
+}
+footer > section > div:nth-child(3){
+    grid-area: other;
+}
+
+footer > section > div > ul li{
+
+font-size: 12px;
+margin: 5px 0;
+border-width: 1px;
+border-style:outset;
+border-color: var(--accent);
+border-radius: 5px;
+position: relative;
+overflow: hidden;
+}
+footer > section > div > ul li:before{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2500%;
+    top: 50%;
+    left: -50px;
+    z-index: 1;
+    translate:0 -50% ;
+    transform: rotate(-45deg);
+    background-color: var(--secondary);
+    transition: .8s;
+}
+footer > section > div > ul li:hover::before{
+    width: 200%;
+}
+footer > section > div > ul li a{
+    color: rgb(255, 161, 74);
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+    padding: 5px 10px;
+    display: block;
+}
+footer > div{
+    border-top: 1px solid;
+    padding: 10px;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+
+@media only screen and (max-width:1200px){
+    section#popular_activity {
+    padding: 100px 10px;
+    position: static;
+}
+}
+/* max size 1000px */
+
+@media only screen and (max-width:1000px){
+   header {
+    height: 50vh;
+    background-size: 100% 50vh;
+}
+
+header .container div {
+    top: 25vh;
+    padding: 0 10px;
+}
+header::before, #specia_event::before {
+    height: 50vh;
+}
+.nav_box {
+    padding: 0px;
+}
+nav a {
+    font-size: 15px;
+}
+nav span {
+    /* display: none; */
+}
+.container {
+    width: 90%;
+}
+section{
+    padding: 170px 10px 200px;
+}
+/* most popular */
+section#popular_activity {
+    padding: 30px 5px 0;
+    position: static;
+}
+section h2 {
+    font-size: 18px;
+}
+section#popular_activity > div {
+    gap: 5px;
+    justify-content: center;
+}
+.card_activity:last-child{
+    flex-grow: 1;
+    max-width: 400px;
+}
+section#popular_activity > div p {
+    font-size: 13px;
+}
+
+/* Other events */
+#activity_list_container {
+    gap: 10px;
+    grid-template-columns:repeat(auto-fit, minmax(255px, 1fr));
+    padding: 0;
+}
+.activity_box {
+    display: flex;
+    /* gap: 10px; */
+    width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    border: 5px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--accent);
+    box-shadow: 1px 1px 5px 1px #333;
+    transition: .3s;
+    flex-direction: column;
+}
+.activity_box img {
+    width: 100%;
+    height: 100%;
+    transition: 1.5s;
+}
+
+/* special event */
+#specia_event {
+    background-size: cover;
+}
+#specia_event::before {
+    height: 100% !important;
+}
+/* own event */
+.own_event{
+    padding-top: 100px;
+}
+.own_event > p {
+    font-size: 16px;
+    max-width: 400px;
+}
+.form_box {
+    height: 0px;
+    transition: .2s;
+}
+label[for="show_form"]:has(input:checked)+ .form_box {
+    height: 850px;
+}
+label[for="show_form"]:has(input:checked)+ .form_box > div {
+    padding: 0;
+    width: auto;
+}
+label {
+    font-size: 14px;
+}
+.service_inp p, .event_type p {
+    font-size: 14px;
+}
+.service_inp label:has(input[type="checkbox"]) {
+    font-size: 14px;
+}
+/* Footer */
+footer section {
+    padding: 50px 20px;
+    gap: 40px;
+    
+}
+}
+
+/* Mobile Size */
+
+@media only screen and (max-width:850px){
+
+.container {
+    width: 100%;
+}
+#bar{
+    display: block;
+    color: white;
+    font-size: 20px;
+    position: fixed;
+    top:10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+#bar input{
+    display: none;
+   
+}
+#bar i[class*='fa-xmark']{
+    display: none;
+}
+#bar:has(input:checked)+ nav{
+    transform: translateX(0);
+}
+#bar:has(input:checked) i[class*='fa-xmark']{
+    display: block;
+}
+#bar:has(input:checked) i[class*='fa-bar']{
+    display: none;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    transform: translateX(100%);
+    background: var(--backdrop-merror);
+    padding: 10px;
+    backdrop-filter: blur(5px);
+    border-radius: 10px 0 0 10px;
+    transition: .5s;
+    z-index: 20000;
+}
+nav a {
+    font-size: 15px;
+    background:var(--backdrop-merror) ;
+    padding: 10px;
+    margin: 0;
+    border-radius: 10px;
+}
+header .container div h1 {
+    padding: 5px 60px 5px 20px;
+    font-size: 24px;
+}
+/* most popular */
+section#popular_activity {
+    position: relative;
+    top: 15px;
+}
+section#popular_activity > div {
+    flex-wrap: wrap;
+}
+
+.card_activity {
+    padding: 5px 10px;
+    line-height: 20px;
+    border-width: 2px;
+    flex: 0 0 47%;
+}
+/* Other events */
+#activity_list_container {
+    gap: 15px;
+}
+
+/* special event */
+
+#special_detail_box .special_detail {
+    padding: 10px 20px;
+    width: 100%;
+}
+/* own event */
+.form_box > div {
+    left: 0;
+    transform: translate(0,0);
+}
+label[for="show_form"]:has(input:checked)+ .form_box > div {
+    width: 100%;
+}
+.form_box form {
+    padding: 5px 0;
+    grid-template-areas: "name"
+        "lastname"
+        "phone"
+        "date"
+        "service"
+        "eventType"
+        "vistNumber"
+        "submit";
+    gap: 20px;
+}
+/* Footer */
+footer section {
+    grid-template-areas: "quickLink"
+        "main"
+        "other";
+    text-align: center;
+}
+}
